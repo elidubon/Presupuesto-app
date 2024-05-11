@@ -1,0 +1,1 @@
+{"ast":null,"code":"import { Ingreso } from \"./ingreso.model\";\nexport class IngresoServicio {\n  constructor() {\n    this.ingreso = [new Ingreso(\"salario\", 4000), new Ingreso(\"venta de coche\", 500)];\n  }\n}","map":null,"metadata":{},"sourceType":"module","externalDependencies":[]}
