@@ -1,12 +1,25 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Ingreso } from './ingreso.model';
+import { IngresoServicio } from './ingreso.service';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-ingreso',
-  standalone: true,
-  imports: [],
+  //standalone: true,
+  //imports: [FormsModule],
   templateUrl: './ingreso.component.html',
-  styleUrl: './ingreso.component.css'
+  styleUrl: './ingreso.component.css',
 })
-export class IngresoComponent {
+export class IngresoComponent implements OnInit {
+  ingresos: Ingreso[] = [];
 
+  constructor(private ingresoServicio: IngresoServicio) {}
+
+  ngOnInit() {
+    this.ingresos = this.ingresoServicio.ingresos;
+  }
+
+  eliminarRegistro(ingreso:Ingreso){
+  this.ingresoServicio.eliminar(ingreso);
+  }
 }

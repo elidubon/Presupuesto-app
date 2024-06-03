@@ -17,14 +17,14 @@ export class AppComponent {
 
   constructor (private ingresoServicio:IngresoServicio, private egresoServicio:EgresoServicio){
     this.ingresos = ingresoServicio.ingresos;
-    this.egresos = egresoServicio.ingresos;
+    this.egresos = egresoServicio.egresos;
 
   }
 
   getIngresoTotal(){
     let ingresoTotal:number=0;
     this.ingresos.forEach(Ingreso => {
-      ingresoTotal =+ Ingreso.valor;
+      ingresoTotal += Ingreso.valor;
     });
     return ingresoTotal;
   }
@@ -32,7 +32,7 @@ export class AppComponent {
   getEgresoTotal(){
     let egresoTotal:number=0;
     this.egresos.forEach(egreso => {
-      egresoTotal =+ egreso.valor;
+      egresoTotal += egreso.valor;
     });
     return egresoTotal;
   }
