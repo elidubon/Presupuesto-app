@@ -32,8 +32,17 @@ export class FormularioComponent implements OnInit{
     console.warn("geee");
     if(this.tipo === "ingresoOperacion"){
       this.ingresoServicio.ingresos.push(new Ingreso(this.descripcionInput,this.valorInput));
+      console.warn('mas',this.descripcionInput,this.valorInput);
+      this.resetform();
     }else{
       this.egresoServicio.egresos.push(new Egreso(this.descripcionInput,this.valorInput));
+      console.warn('menos',this.descripcionInput,this.valorInput);
+      this.resetform();
     }
+  }
+
+  private resetform(){
+    this.descripcionInput = '';
+    this.valorInput=null;
   }
 }
