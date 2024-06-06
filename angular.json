@@ -13,6 +13,18 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "allowedCommonJsDependencies": [
+              "core-js",
+              "canvg",
+              "html2pdf.js",
+              "html2canvas",
+              "core-js/modules/es.array.index-of.js",
+              "dompurify",
+              "rgbcolor",
+              "css-font-loading-module",
+              "stackblur-canvas",
+              "raf"
+            ],
             "outputPath": "dist/presupuesto-app",
             "index": "src/index.html",
             "main": "src/main.ts",

@@ -4,10 +4,11 @@ import { EgresoServicio } from '../egreso/egreso.service';
 import { Ingreso } from '../ingreso/ingreso.model';
 import { Egreso } from '../egreso/egreso.model';
 
+//
+import { DatosService } from '../pdf.service';
+
 @Component({
   selector: 'app-formulario',
-  //standalone: true,
-  //imports: [],
   templateUrl: './formulario.component.html',
   styleUrl: './formulario.component.css'
 })
@@ -16,7 +17,7 @@ export class FormularioComponent implements OnInit{
   descripcionInput:string;
   valorInput:number;
 
-  constructor(private ingresoServicio:IngresoServicio, private egresoServicio:EgresoServicio){}
+  constructor(private ingresoServicio:IngresoServicio, private egresoServicio:EgresoServicio, private datosService: DatosService){}
 
   ngOnInit(): void {
     
@@ -33,12 +34,17 @@ export class FormularioComponent implements OnInit{
     if(this.tipo === "ingresoOperacion"){
       this.ingresoServicio.ingresos.push(new Ingreso(this.descripcionInput,this.valorInput));
       console.warn('mas',this.descripcionInput,this.valorInput);
-      this.resetform();
+      //
     }else{
       this.egresoServicio.egresos.push(new Egreso(this.descripcionInput,this.valorInput));
       console.warn('menos',this.descripcionInput,this.valorInput);
-      this.resetform();
+      //this.resetform();
     }
+
+    const nuevoDato = { descripcion: this.descripcionInput, valor: this.valorInput };
+    console.warn('wwwwww',this.descripcionInput,this.valorInput );
+    this.datosService.agregarDato(nuevoDato); // Guardar el nuevo dato en el servicio
+    this.resetform();
   }
 
   private resetform(){
